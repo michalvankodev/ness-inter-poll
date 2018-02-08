@@ -14,6 +14,8 @@ Adding real-time interactivity could be implemented with one Websocket service a
 
 For our use case web socket service doesn't have a big business value while the requirements are not for being real-time poll/survey application.
 
+If needed we can also add server-side rendering for additional performance benefits and SEO. 
+
 Description of the diagram:
 1. Client will download static assets from a static server / CDN
 2. Data transmission should go through Load balancer which should route request to the different services (on the same host)
