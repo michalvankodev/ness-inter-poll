@@ -11,3 +11,19 @@ Inter-poll application for Ness Full stack developer program
 - The job runs on slave = slave is windows host = in case slave is not running, run following file: c:\Docker_Jenkins_slave_runner\slave-agent.jnlp
 - slave directory: c:\Docker_Jenkins_slave_directory\
 
+### MONGO DB DOCKER SETUP:
+- Mongo DB has been started for the first time on the server with following commands:
+  docker volume create --name=mongodata
+  docker run -d -p 27017:27017 -v mongodata:/data/db --name=mymongo mongo
+- IDE for Mongo DB has been installed on server:   Mongo DB Compass Community Edition (available on the desktop)
+- Login to Mongo DB via Mongo DB Compass Community Edition (from the server):
+  Hostname: 172.30.85.193
+  Port: 27017
+  then click on Connect
+- If server is restarted or docker is restarted and mongoDb container will not be running:
+  start docker as administrator
+  and run following command:
+  docker mymongo start
+  This will start same container with all data in Db which you have created before
+  
+
