@@ -13,8 +13,10 @@ Inter-poll application for Ness Full stack developer program
 
 ### MONGO DB DOCKER SETUP:
 - Mongo DB has been started for the first time on the server with following commands:
-  docker volume create --name=mongodata
-  docker run -d -p 27017:27017 -v mongodata:/data/db --name=mymongo mongo
+    
+    docker volume create --name=mongodata 
+    
+    docker run -d -p 27017:27017 -v mongodata:/data/db --name=mymongo mongo
 - IDE for Mongo DB has been installed on server:   Mongo DB Compass Community Edition (available on the desktop)
 - Login to Mongo DB via Mongo DB Compass Community Edition (from the server):
   Hostname: 172.30.85.193
