@@ -1,0 +1,34 @@
+{
+  users: {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    role: enum [adnim, puchlisher],
+    created_date: Date
+  },
+  surveys: {
+    _id: string,
+    name: string,
+    pubslisher_id: string,
+    created_date: Date,
+    updated_date: Date,
+    publish_date: Date,
+    close_date: Date,
+    category: string,
+    questions: {
+    _id: string,
+    type: enum [radio, checkbox, text],
+    custom_text_field: string
+  },
+  responses: {
+    _id: string,
+    survey_id: string,
+    respondend: ? (depends on ldap),
+    created_date: Date,
+    answers: {
+    _id: string,
+    question_id: string,
+    value: answerValueType [radioAnswer | checkboxAnswer | textAnswer ...]
+  }
+}
