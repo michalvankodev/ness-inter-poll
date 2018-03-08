@@ -1,6 +1,6 @@
 ### Ness inter-poll architecture
 
-![Architecture preview](https://github.com/michalvankodev/ness-inter-poll/blob/master/assets/architecture-diagram.png)
+![Architecture preview](https://github.com/michalvankodev/ness-inter-poll/blob/master/assets/architecture-diagramv2.png)
 
 While creating the architecture for ness-inter-poll we have to have in mind these main concerns:
 - Resources available
@@ -26,3 +26,14 @@ Description of the diagram:
 7. CI/CD service is responsible for checking git repository for changes and then deploy when necessary.
 8. While deployment CI/CD has to take care of triggering database backup and migrations.
 9. Database backup should happen at reasonable times on regular.
+
+
+## Libraries & Frameworks
+
+We use stateless REST APIs to change, modify, submit & view surveys.
+We chose mongodb as a database because of the scalability capabilities. We can create shards as we need.
+For example if we expect a very big number and load only while submitting responses from users we can choose to just shard the responses collection accross multiple data centers and keep all more valueable data that we need to be consistent in one "main" shard.
+
+Reverse proxy serves like a router which will intercept all incoming requests and will deliver them to the service which will process them.
+
+Main goal of websocket service is to update client with events coming from REST APIs. As instances of WS services and REST services are managed on the fly, they have to communicate via a message bus. Message bus will work in simple PUB SUB with a network proxy. http://zguide.zeromq.org/page:all#The-Dynamic-Discovery-Problem
