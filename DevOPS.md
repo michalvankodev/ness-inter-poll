@@ -6,7 +6,7 @@ On SKKSCFullStack1 server we have following:
    it triggers Jenkins job and downloads latest code 
 - running 2nd docker container with Mongo DB
 
-On SKKSCFullStack1 server we plan 5to do following:
+On SKKSCFullStack1 server we plan to do following:
 - have docker container for each part of application
 - Create Jenkins Pipeline with Docker, which will after each change in git repository
 create new docker images and run them
