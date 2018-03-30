@@ -14,7 +14,7 @@ create new docker images and run them
 - all of them will be running on SKKSCFullStack1
 - Regarding to Jenkins Pipeline with Docker, we would like to have something similar to:
   https://www.youtube.com/watch?v=USxRrMWzK1s
-- Material to study regarding Jenkins Pipeline with Docker (pdf file, starting on page 49):
+- Materials to study regarding Jenkins Pipeline with Docker (pdf file, starting on page 49):
   https://jenkins.io/doc/book/getting-started/
 - Udemy course for Jenkins Pipeline with Docker:
   https://ness.udemy.com/learn-devops-ci-cd-with-jenkins-using-pipelines-and-docker/
