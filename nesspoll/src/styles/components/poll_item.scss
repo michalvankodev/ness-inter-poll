@@ -1,0 +1,44 @@
+.poll_item {
+  display: flex;
+  padding-left: $standart_spacing;
+  padding-right: $standart_spacing;
+  border-bottom: 1px solid $font_grey;
+  .poll_item_status_indicator {
+    flex-shrink: 1;
+    align-self: center;
+    span {
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin-right: $standart_spacing;
+      border-radius: 10px;
+      border: 2px solid $primary_orange;
+    }
+  }
+  .poll_item_content {
+    flex-basis: 500px;
+    flex-grow: 1;
+    padding-left: $standart_spacing;
+    .poll_item_name {
+      line-height: $line_height;
+      margin-top: $standart_spacing;
+    }
+    .poll_item_status{
+      line-height: $line_height;
+      margin-bottom: $standart_spacing;
+      color: $font_grey;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .poll_item_burger {
+    align-self: center;
+    justify-content: center;
+    padding-right: $standart_spacing;
+  }
+}
+
+.poll_item:nth-of-type(2n) {
+  background: $background_soft_grey;
+}

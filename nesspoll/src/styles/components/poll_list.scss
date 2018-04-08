@@ -1,0 +1,14 @@
+.pool_list_container {
+  padding-top: $standart_spacing;
+  .add_poll {
+    float: right;
+    right: $standart_spacing;
+    background: $primary_blue;
+    height: 70px;
+    width: 70px;
+    margin-top: -80px;
+    margin-right: $standart_spacing;
+    border-radius: 70px;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.25);
+  }
+}

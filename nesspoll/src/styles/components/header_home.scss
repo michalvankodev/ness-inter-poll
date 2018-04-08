@@ -1,0 +1,24 @@
+.header_home {
+  clip-path: polygon(
+                  0 0, /* left top */
+                  100% 0, /* right top */
+                  100% 72%, /* right bottom */
+                  0 100% /* left bottom */);
+  background: red;
+  height:220px;
+  width: 100%;
+  background: url('http://www.eurokerdos.com/wp-content/uploads/2017/11/%CE%BF%CF%85%CF%81%CE%B1%CE%BD%CE%BF%CE%BE%CF%85%CF%83%CF%84%CE%B5%CF%82.jpg');
+  .user_picture {
+    border-radius: 50px;
+    height: 70px;
+    width: 70px;
+    background: url('http://theinspirationgrid.com/app/uploads/2017/02/art-blase-feature.jpg');
+    background-size: cover;
+    position: absolute;
+    top: $header_top_spacing;
+    left: $standart_spacing;
+    border: 2px solid #ffffff;
+
+  }
+}
+
