@@ -6,3 +6,4 @@ output/
 .project
 *.log
 .idea/
+node_modules/
