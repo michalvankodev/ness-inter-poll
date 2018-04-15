@@ -4,8 +4,6 @@ import TestRunners.TestDefaultValues;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pages.FacebookLoginPage;
-import pages.FacebookWelcomePage;
 import pages.NessInterPollHomePage;
 
 
