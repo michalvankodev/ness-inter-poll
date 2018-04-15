@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Facebook" verbose="1" >
+
+    <parameter name="operatingSystem" value="MacOS"></parameter>
+    <parameter name="browser" value="Chrome"></parameter>
+    <parameter name="link" value="http://localhost:3000/"></parameter>
+    <parameter name="user" value=""></parameter>
+    <parameter name="password" value=""></parameter>
+
+    <test name="Facebook" >
+        <classes>
+            <class name="TestRunners.TestRunnerNessInterPoll" />
+        </classes>
+    </test>
+
+</suite>
