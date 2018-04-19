@@ -4,9 +4,7 @@ Docker has two modes: &quot;common&quot; and &quot;swarm&quot;.
 
 - **BUILD SWARM TO IMPLEMENT CD-CI**
 
-_CREATED WITH_:
-
-        _DOCKER VERSION_
+CREATED WITH DOCKER VERSION:
 
  Docker version 17.12.0-ce, build c97c6d6!!!
 
@@ -28,7 +26,9 @@ RUN COMMANDS FROM WINDOWS POWERSHELL AS ADMIN!
 
 docker swarm join --token SWMTKN-1-1sx4htgt16fcjiy8q3xllcsxb4a9qcmrnz6d5bgh5h71rhbdgj-ay2jyu07phv62pxdtp259qh59 192.168.65.3:2377
 
-To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.
+To add a manager to this swarm, run: 
+                docker swarm join-token manager; 
+and follow the instructions.
 
 NOTE: GET OFF THE SWARM MODE: **docker swarm leave** BE CAREFULL IT ERASES ALL DATA. There is possibility to save swarm state. How? Find out later..
 
@@ -106,7 +106,8 @@ NOTE: If they are not running start them via docker command,e.g: **docker-machin
 
 NOTE: You can send commands to your VMs from host using: **docker-machine ssh,** like:
 
-**docker-machine ssh jenkins-master &quot;docker swarm init --advertise-addr &lt;jenkins-master ip&gt;&quot;**
+**docker-machine ssh jenkins-master;
+docker swarm init --advertise-addr &lt;jenkins-master ip&gt;**
 
 or you can directly ssh to your machine:
 
@@ -140,11 +141,13 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 1.
   1. _add dev-node to swarm master_:
 
-**docker-machine ssh dev-node &quot;docker swarm join --token SWMTKN-1-0z1n4htm2dqmgb9eiry8ij15rp10h99oh5gzwfb7ndcl5zgerm-7joqs8vvwjpsvsmronihluz4a 192.168.1.182:2377&quot;**
+**docker-machine ssh dev-node;
+docker swarm join --token SWMTKN-1-0z1n4htm2dqmgb9eiry8ij15rp10h99oh5gzwfb7ndcl5zgerm-7joqs8vvwjpsvsmronihluz4a 192.168.1.182:2377;**
 
 To see all nodes in swarm, you need to run command on swarm master(now it is jenkins-master, not your local pc anymore..):
 
-                **docker-machine ssh jenkins-master &quot;docker node ls&quot;       **
+                **docker-machine ssh jenkins-master;
+                docker node ls;**
 
 You will see, something like:
 
@@ -160,14 +163,16 @@ NOTE: To promote node to be swarm manager(run from swarm master):
 
 NOTE: To see info about dev-node, ssh to it and run:
 
-**docker-machine ssh dev-node &quot;docker info&quot;**
+**docker-machine ssh dev-node;
+docker info;**
 
 or from swarm master(Leader= jenkins-master) run:
 
 **docker inspect dev node**
 
-1. CREATE JENKINS SERVICE ON JENKINS-MASTER NODE:
-  1. CREATE YOUR OWN REGISTRY
+1. CREATE JENKINS SERVICE:
+  1.1/ CREATE YOUR OWN REGISTRY
+    a/ INSECURE REGISTRY
 
 [https://blog.docker.com/2013/07/how-to-use-your-own-registry/](https://blog.docker.com/2013/07/how-to-use-your-own-registry/)
 
@@ -197,8 +202,7 @@ docker pull myimage
 
 if it&#39;s not working try set up Docker Daemon in Docker Settings to 127.0.0.1/8 to provide insecured! registry
 
-1.
-  1. CREATE YOUR OWN REGISTRY IN SWARM AS A SERVICE
+  b/ CREATE YOUR OWN REGISTRY IN SWARM AS A SERVICE
 
 If you want to make your registry secure or be part of swarm cluster, read more on:
 
@@ -208,20 +212,19 @@ If you want to make your registry secure or be part of swarm cluster, read more 
 
         [https://docs.docker.com/engine/swarm/secrets/#defining-and-using-secrets-in-compose-files](https://docs.docker.com/engine/swarm/secrets/#defining-and-using-secrets-in-compose-files)
 
-1. start jenkins service on JENKINS-MASTER:
+1.2/ start jenkins service:
 
-create volume: **docker volume create jenkins\_volume**
+  1.2.1/ create volume: **docker volume create jenkins\_volume**
 
 [https://docs.docker.com/engine/reference/commandline/volume\_create/#driver-specific-options](https://docs.docker.com/engine/reference/commandline/volume_create/#driver-specific-options)
 
 [https://docs.docker.com/engine/swarm/services/#data-volumes](https://docs.docker.com/engine/swarm/services/#data-volumes)
 
-1.
-  1. run command with mounted volume to persist jenkins-master data:
+  1.2.2/. run command with mounted volume to persist jenkins-master data:
 
 **docker service create --name=jenkins-master -p 50000:50000 -p 80:8080 --mount &quot;type=volume,source=jenkins\_volume,target=/var/jenkins\_home&quot; jenkins**
 
-        basic command without volume: docker-machine ssh jenkins-master &quot;docker service create --name=jenkins-master -p 50000:50000 -p 80:8080 jenkins&quot;
+basic command without volume: docker-machine ssh jenkins-master &quot;docker service create --name=jenkins-master -p 50000:50000 -p 80:8080 jenkins&quot;
 
 NOTE:
 
@@ -243,14 +246,10 @@ docker-machine ssh jenkins-master &#39;docker service logs -f h94phi66batezhbum8
 
 To see services (from master): docker service ls; remove them: docker service remove {id}
 
-1. CREATE JENKINS SLAVE AGENT ON DEV-NODE
+2. CREATE JENKINS SLAVE AGENT
+  2.1. To implement CD-CI with Docker Swarm you need to first create secret that slaves will use to connect to master, run on jenkins-master (it should be global in swarm)
 
-NOTE: run on dev-node(make it swarm manager: docker promote node dev-node, if you didn&#39;t do so yet)
-
-1.
-  1. To implement CD-CI with Docker Swarm you need to first create &quot;secret&quot; that slaves will use to connect to master, run on jenkins-master (it should be global in swarm)
-
-**echo &quot;-master http://192.168.1.185 -password password -username admin&quot;|docker secret create jenkins-v1 –**
+**echo &quot;-master http://192.168.1.185 -password password -username admin&quot;|docker secret create jenkins-v1 **
 
 (we need to use same user we are logged in jenkins-master service!)
 
