@@ -109,7 +109,7 @@ NOTE: You can send commands to your VMs from host using: **docker-machine ssh,**
 
 or you can directly ssh to your machine:
 
-        **docker-machine ssh jenkins-master**
+**docker-machine ssh jenkins-master**
 
 and run:
 
@@ -155,7 +155,7 @@ nqmvvdiw3hxkise8o52nnnaio     jenkins-master      Ready               Active    
 
 NOTE: To promote node to be swarm manager(run from swarm master):
 
-                                **docker promote node dev-node**
+**docker promote node dev-node**
 
 NOTE: To see info about dev-node, ssh to it and run:
 
