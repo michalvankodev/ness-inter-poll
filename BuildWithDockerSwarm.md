@@ -5,14 +5,12 @@ Docker has two modes: &quot;common&quot; and &quot;swarm&quot;.
 - **BUILD SWARM TO IMPLEMENT CD-CI**
 
 CREATED WITH DOCKER VERSION:
-
- Docker version 17.12.0-ce, build c97c6d6!!!
+  Docker version 17.12.0-ce, build c97c6d6!!!
 
 There is an issue with Docker version 18.03 when creating docker machines. I needed downgrade Docker version to get it working.
 
-WINDOWS VERSION
-
-Microsoft Windows 10 Pro, version 10.0.16299 Build 16299
+CREATED WITH WINDOWS VERSION:
+  Microsoft Windows 10 Pro, version 10.0.16299 Build 16299
 
 RUN COMMANDS FROM WINDOWS POWERSHELL AS ADMIN!
 
@@ -40,13 +38,13 @@ see =&gt; [https://docs.docker.com/get-started/part4/#create-a-cluster](https://
 
 NOTE: For testing purposes create only two nodes to save memory
 
-docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; dev-node
+**docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; dev-node**
 
-docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; test-node
+**docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; test-node**
 
-docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; prod-node
+**docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; prod-node**
 
-docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; jenkins-master
+**docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; jenkins-master**
 
 This is successful output:
 
@@ -102,12 +100,12 @@ jenkins-master   -        hyperv   Running   tcp://192.168.1.182:2376           
 
 NOTE: If they are not running start them via docker command,e.g: **docker-machine start dev-node**
 
-1. INSTUCT VMs
+TO INSTUCT VMs
 
 NOTE: You can send commands to your VMs from host using: **docker-machine ssh,** like:
 
-**docker-machine ssh jenkins-master;
-docker swarm init --advertise-addr &lt;jenkins-master ip&gt;**
+**docker-machine ssh jenkins-master**
+**docker swarm init --advertise-addr &lt;jenkins-master ip&gt;**
 
 or you can directly ssh to your machine:
 
@@ -117,7 +115,6 @@ and run:
 
 **docker swarm init --advertise-addr &lt;jenkins-master ip&gt;**
 
-1.
   1. _make a jenkins-master = swarm master_, run on jenkins-master:
 
 **docker swarm init --advertise-addr 192.168.1.182:2377**
@@ -138,16 +135,15 @@ docker swarm join --token SWMTKN-1-0z1n4htm2dqmgb9eiry8ij15rp10h99oh5gzwfb7ndcl5
 
 To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.
 
-1.
-  1. _add dev-node to swarm master_:
+  2. add dev-node to swarm master:
 
-**docker-machine ssh dev-node;
-docker swarm join --token SWMTKN-1-0z1n4htm2dqmgb9eiry8ij15rp10h99oh5gzwfb7ndcl5zgerm-7joqs8vvwjpsvsmronihluz4a 192.168.1.182:2377;**
+**docker-machine ssh dev-node**
+**docker swarm join --token SWMTKN-1-0z1n4htm2dqmgb9eiry8ij15rp10h99oh5gzwfb7ndcl5zgerm-7joqs8vvwjpsvsmronihluz4a 192.168.1.182:2377**
 
 To see all nodes in swarm, you need to run command on swarm master(now it is jenkins-master, not your local pc anymore..):
 
-                **docker-machine ssh jenkins-master;
-                docker node ls;**
+ **docker-machine ssh jenkins-master**
+ **docker node ls**
 
 You will see, something like:
 
@@ -163,8 +159,8 @@ NOTE: To promote node to be swarm manager(run from swarm master):
 
 NOTE: To see info about dev-node, ssh to it and run:
 
-**docker-machine ssh dev-node;
-docker info;**
+**docker-machine ssh dev-node**
+**docker info**
 
 or from swarm master(Leader= jenkins-master) run:
 
@@ -249,7 +245,7 @@ To see services (from master): docker service ls; remove them: docker service re
 2. CREATE JENKINS SLAVE AGENT
   2.1. To implement CD-CI with Docker Swarm you need to first create secret that slaves will use to connect to master, run on jenkins-master (it should be global in swarm)
 
-**echo &quot;-master http://192.168.1.185 -password password -username admin&quot;|docker secret create jenkins-v1 **
+**echo &quot;-master http://192.168.1.185 -password password -username admin&quot;|docker secret create jenkins-v1**
 
 (we need to use same user we are logged in jenkins-master service!)
 
