@@ -3,7 +3,8 @@ Inter-poll application for Ness Full stack developer program
 
 ### JENKINS DOCKER SETUP:
 - Jenkins has been setup on SKKSCFullSTack1, it runs via docker container, in case docker container is not running, run following command via cmd (cmd must be started as administrator):
-  docker run -p 8080:8080 -p 50000:50000 -v c:\Docker_Jenkins_Files\:/var/jenkins_home jenkins
+  docker run -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock:z  -e COMPOSE_CONVERT_WINDOWS_PATHS=1. -v c:\Docker_Jenkins_Files:/var/jenkins_home -d jenkins-docker
+  (docker run -p 8080:8080 -p 50000:50000 -v c:\Docker_Jenkins_Files\:/var/jenkins_home jenkins) - OLD
 - Jenkins directory for docker: c:\Docker_Jenkins_Files\
 - link on Jenkins from SKKSCFullSTack1: http://172.30.85.193:8080/
 - link on Jenkins from Ness network: http://skkscfullstack1:8080/
