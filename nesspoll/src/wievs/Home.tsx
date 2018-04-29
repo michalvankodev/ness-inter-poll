@@ -7,10 +7,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import { PollsData } from '../interfaces/PollsData';
 
 export const materialTheme = getMuiTheme({
-  moreVertIcon: {
-    fill: 'red',
-    color: '#644367'
-  }
 });
 
 /* tslint:disable no-any */
