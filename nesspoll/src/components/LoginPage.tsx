@@ -2,10 +2,6 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import { TextField, RaisedButton } from 'material-ui';
 
-const raisedButtonStyle = {
-  margin: 12,
-};
-
 interface LoginState {
     username: String;
     password: String;
@@ -13,10 +9,10 @@ interface LoginState {
 }
 
 interface LoginProps {
-  user: {
-    username: String;
-    password: String;
-  };
+    user: {
+      username: String;
+      password: String;
+    };
 }
 
 class LoginPage extends React.Component<LoginProps, LoginState> {
@@ -65,8 +61,8 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
           <TextField hintText="Enter your password" onChange={(event: any) => this.setState({password: event.target.value})} floatingLabelText="Password"/>
         </div>
         <div className="button">
-          <RaisedButton onClick={() => {this.handleClickSignIn(); }} style={raisedButtonStyle} label="Sign In" />
-          <RaisedButton onClick={() => {this.handleClickRegister(); }} style={raisedButtonStyle} label="Register"/>
+          <RaisedButton onClick={() => this.handleClickSignIn()} style={{margin: 12}} label="Sign In" />
+          <RaisedButton onClick={() => this.handleClickRegister()} style={{margin: 12}} label="Register"/>
         </div>
       </div>
     );

@@ -13,7 +13,7 @@ const PollList = (props) => {
   console.log(pollItems);
   return (
     <div className="pool_list_container">
-      <FloatingActionButton className="add_poll" onClick={props.action}>
+      <FloatingActionButton backgroundColor="green" className="add_poll" onClick={props.action}>
         <ContentAdd />
       </FloatingActionButton>
       {pollItems}
