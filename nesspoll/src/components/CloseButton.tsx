@@ -18,7 +18,7 @@ class CloseButton extends React.Component<any, any> {
         const { redirect } = this.state;
     
         if (redirect) {
-          return <Redirect to="/"/>;
+          return <Redirect to="/home"/>;
         }
 
         return (
