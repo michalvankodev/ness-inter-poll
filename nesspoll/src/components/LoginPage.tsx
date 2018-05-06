@@ -3,15 +3,15 @@ import { Redirect } from 'react-router-dom';
 import { TextField, RaisedButton } from 'material-ui';
 
 interface LoginState {
-    username: String;
-    password: String;
+    username: string;
+    password: string;
     redirect: boolean;
 }
 
 interface LoginProps {
     user: {
-      username: String;
-      password: String;
+      username: string;
+      password: string;
     };
 }
 
@@ -46,19 +46,17 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
   }
 
   render() {
-    const { redirect } = this.state;
-
-    if (redirect) {
+    if (this.state.redirect) {
       return <Redirect to="/home"/>;
     }
 
     return (
       <div className="login_page">
         <div>
-          <TextField hintText="Enter your username" type="text" onChange={(event: any) => this.setState({username: event.target.value})} floatingLabelText="Username"/>
+          <TextField hintText="Enter your username" type="text" onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({username: event.currentTarget.value})} floatingLabelText="Username"/>
         </div>
         <div>
-          <TextField hintText="Enter your password" onChange={(event: any) => this.setState({password: event.target.value})} floatingLabelText="Password"/>
+          <TextField hintText="Enter your password" onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({password: event.currentTarget.value})} floatingLabelText="Password"/>
         </div>
         <div className="button">
           <RaisedButton onClick={() => this.handleClickSignIn()} style={{margin: 12}} label="Sign In" />

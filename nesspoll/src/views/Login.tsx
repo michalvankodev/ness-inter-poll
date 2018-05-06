@@ -22,7 +22,7 @@ const materialTheme = getMuiTheme({
 });
 
 /* tslint:disable no-any */
-class Login extends React.Component<any, any> {
+class Login extends React.Component {
     constructor(props: any) {
         super(props);
         this.state = ({

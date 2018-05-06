@@ -25,9 +25,7 @@ class HeaderHome extends React.Component<any, HeaderState> {
   }
 
   render() {
-    const { redirect } = this.state;
-
-    if (redirect) {
+    if (this.state.redirect) {
       return <Redirect to="/"/>;
     }
 
