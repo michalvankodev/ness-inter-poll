@@ -3,8 +3,8 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-import Home from './wievs/Home';
-import Login from './wievs/Login';
+import Home from './views/Home';
+import Login from './views/Login';
 
 import './styles/App.scss';
 
