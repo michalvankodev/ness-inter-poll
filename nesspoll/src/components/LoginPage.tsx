@@ -34,7 +34,7 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
     }
 
     if (!isExisting) {
-      alert('Username or Password wrongly defined');
+      alert('Username or Password is not correct');
       return;
     }
 
@@ -52,15 +52,47 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
 
     return (
       <div className="login_page">
+        <img src={require('../assets/images/logo-ness.png')} className="logo" />
         <div>
-          <TextField hintText="Enter your username" type="text" onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({username: event.currentTarget.value})} floatingLabelText="Username"/>
+          <label style={{color: '#02a5ca', fontWeight: 'bold', fontSize: 26}}>POLL</label>
         </div>
         <div>
-          <TextField hintText="Enter your password" onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({password: event.currentTarget.value})} floatingLabelText="Password"/>
+          <TextField
+            hintText="Enter your username"
+            style={{marginLeft: 15, marginRight: 15}}  
+            type="text" 
+            onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({username: event.currentTarget.value})} 
+            floatingLabelText="Username"
+          /> 
+        </div>
+        <div>
+          <TextField 
+           hintText="Enter your password"
+           style={{marginLeft: 15, marginRight: 15}} 
+           onChange={(event: React.FormEvent<HTMLInputElement>) => this.setState({password: event.currentTarget.value})} 
+           floatingLabelText="Password"
+          />
         </div>
         <div className="button">
-          <RaisedButton onClick={() => this.handleClickSignIn()} style={{margin: 12}} label="Sign In" />
-          <RaisedButton onClick={() => this.handleClickRegister()} style={{margin: 12}} label="Register"/>
+          <RaisedButton 
+            onClick={() => this.handleClickSignIn()} 
+            style={{marginTop: 25}} 
+            label="Sign In"
+            fullWidth={true} 
+          />
+        </div>
+        <div className="request">
+          <label 
+            style={{marginTop: 10, marginBottom: 10, marginRight: 2,  color: '#A9A9A9', fontSize: 12}}
+          >
+            Don't have an account?
+          </label>
+          <a 
+            href="http://nesslife.sk" 
+            style={{marginTop: 10, marginBottom: 10, color: '#FFFFFF', fontSize: 12}}
+          >
+            Request One
+          </a>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import LoginPage from '../components/LoginPage';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { grey200, blue500, black, white, grey400 } from 'material-ui/styles/colors';
+import { lightBlue400, black, white, grey400 } from 'material-ui/styles/colors';
 
 const materialTheme = getMuiTheme({
     palette: {
@@ -10,12 +10,12 @@ const materialTheme = getMuiTheme({
       },
       textField: {
         floatingLabelColor: grey400,
-        focusColor: blue500,
-        hintColor: grey200,
-        
+        focusColor: lightBlue400,
+        hintColor: grey400,
+        textColor: white
       },
       raisedButton: {
-        color: blue500,
+        color: lightBlue400,
         textColor: white,
       }
 });
@@ -41,7 +41,7 @@ class Login extends React.Component<any, LoginState> {
 
 render() {
     return (
-      <div className="app_container">
+      <div className="login_container">
         <MuiThemeProvider muiTheme={materialTheme}>
           <LoginPage user={this.state.user}/>
         </MuiThemeProvider>
