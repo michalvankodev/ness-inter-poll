@@ -6,7 +6,7 @@ services:
     build:
       context: mongo/
       user: root
-      volumes: mongodata:/data/db
+      volumes: - mongodata:/data/db
       ports:        
         - 27017:27017      
   nesspoll-users:
