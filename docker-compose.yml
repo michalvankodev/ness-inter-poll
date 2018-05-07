@@ -1,6 +1,6 @@
 # see compatibility table: https://github.com/docker/compose/releases
 # see networking info: https://docs.docker.com/compose/networking/
-version: '2.4'
+version: '3.6'
 services:
   mongo:
     build:
