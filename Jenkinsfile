@@ -6,7 +6,7 @@ node {
         commit_id = 'latest'
     }
     stage('Compose-Up'){
-        sh "docker-compose --force-recreate -f docker-compose.yml up --build"
+        sh "docker-compose -f docker-compose.yml up --build"
     }
    
    //stage('Test') {
