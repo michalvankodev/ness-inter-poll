@@ -1,0 +1,32 @@
+# see compatibility table: https://github.com/docker/compose/releases
+# see networking info: https://docs.docker.com/compose/networking/
+version: '3'
+services:
+  mongo:
+    build:
+      context: ./mongo
+      #user: root
+      #volumes: - mongodata:/data/db
+      ports:        
+        - "27017:27017"     
+  nesspoll-users:
+    build:
+      context: ./services/users   
+      #user: root
+      ports:
+        - "3001:3001"     
+    #container_name: nesspoll-users   
+    depends_on:
+      - "mongo"    
+  nesspoll:
+    build:
+      context: ./nesspoll
+    #privileged: true
+    #user: root
+    ports:
+      - "3000:3000"      
+    #container_name: nesspoll
+    #depends_on:
+      #- "nesspoll-users"
+  
+    

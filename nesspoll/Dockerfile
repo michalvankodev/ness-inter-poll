@@ -1,32 +1,19 @@
-#FROM node:4.6
-#WORKDIR /app
-#ADD . /app
-#RUN npm install
-#EXPOSE 3000
-#CMD npm start
+FROM node:10
 
-#FROM node:7.8.0
-#ENV NPM_CONFIG_LOGLEVEL warn
-#COPY . .
-##RUN npm run build --production
-#RUN npm install
-#CMD serve -s build
-#EXPOSE 5000
-
-# base image
-FROM node:7.8.0
-
-# set working directory
-RUN mkdir /usr/src/app
+# Create app directory
 WORKDIR /usr/src/app
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# install and cache app dependencies
-COPY package.json /usr/src/app/package.json
-RUN npm install --silent
-RUN npm install react-scripts@1.1.1 -g --silent
+RUN npm install
+# If you are building your code for production
+# RUN npm install --only=production
 
-# start app
-CMD ["npm", "start"]
+# Bundle app source
+COPY . .
+
+EXPOSE 3000
+CMD [ "npm", "start" ]

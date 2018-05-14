@@ -76,9 +76,8 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
         <div className="button">
           <RaisedButton 
             onClick={() => this.handleClickSignIn()} 
-            style={{marginTop: 25}} 
+            style={{marginTop: 25, width: 300}} 
             label="Sign In"
-            fullWidth={true} 
           />
         </div>
         <div className="request">

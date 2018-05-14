@@ -1,12 +1,14 @@
 FROM jenkins
+
 USER root
+RUN apt-get -qq update \
+   && apt-get -qq -y install \
+   curl \
+   && apt-get -y install sudo
 
-RUN mkdir -p /tmp/download && \
- curl -L https://get.docker.com/builds/Linux/x86_64/docker-1.13.1.tgz | tar -xz -C /tmp/download && \
- rm -rf /tmp/download/docker/dockerd && \
- mv /tmp/download/docker/docker* /usr/local/bin/ && \
- rm -rf /tmp/download && \
- groupadd -g 999 docker && \
- usermod -aG staff,docker jenkins
+RUN curl -sSL https://get.docker.com/ | sh \
+     && curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 
-user jenkins
+RUN usermod -a -G staff jenkins
+
+USER jenkins
