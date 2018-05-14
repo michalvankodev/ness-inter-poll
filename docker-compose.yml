@@ -7,13 +7,13 @@ services:
       context: ./mongo
       #user: root
       #volumes: - mongodata:/data/db
-      ports:        
+    ports:        
         - "27017:27017"     
   nesspoll-users:
     build:
       context: ./services/users   
       #user: root
-      ports:
+    ports:
         - "3001:3001"     
     #container_name: nesspoll-users   
     depends_on:
