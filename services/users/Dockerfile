@@ -1,1 +1,1 @@
-FROM node:7.8.0
+FROM node:10
