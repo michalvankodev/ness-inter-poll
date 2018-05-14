@@ -7,7 +7,7 @@ WORKDIR /usr/src/services/users
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm i --production
+RUN npm install
 # If you are building your code for production
 # RUN npm install --only=production
 
@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 8001
 
-CMD [ "npm", "run", "prod" ]
+CMD [ "npm", "start" ]
