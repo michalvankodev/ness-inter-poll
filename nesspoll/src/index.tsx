@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import Home from './views/Home';
 import Login from './views/Login';
+import Poll from './views/Poll';
 
 import './styles/App.scss';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Switch>
         <Route exact={true} path="/" component={Login} />
         <Route path="/home" component={Home} />
+        <Route path="/poll" component={Poll} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement
