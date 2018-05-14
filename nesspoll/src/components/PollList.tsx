@@ -1,6 +1,8 @@
 import * as React from 'react';
 // import { PollsData } from '../interfaces/PollsData';
 import PollItem from './PollItem';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const PollList = (props) => {
   const pollItems = props.polls_data.map((pollData) => {
@@ -11,7 +13,9 @@ const PollList = (props) => {
   console.log(pollItems);
   return (
     <div className="pool_list_container">
-      <button className="add_poll" onClick={props.action} />
+      <FloatingActionButton backgroundColor="green" className="add_poll" onClick={props.action}>
+        <ContentAdd />
+      </FloatingActionButton>
       {pollItems}
     </div>
   );
