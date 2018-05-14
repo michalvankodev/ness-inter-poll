@@ -7,10 +7,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import { PollsData } from '../interfaces/PollsData';
 
 export const materialTheme = getMuiTheme({
-  moreVertIcon: {
-    fill: 'red',
-    color: '#644367'
-  }
 });
 
 /* tslint:disable no-any */
@@ -92,7 +88,7 @@ class Home extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="app_container">
+      <div className="home_container">
         <MuiThemeProvider muiTheme={materialTheme}>
           <HeaderHome />
           <PoolList polls_data={this.state.polls_data} action={this.handler}/>

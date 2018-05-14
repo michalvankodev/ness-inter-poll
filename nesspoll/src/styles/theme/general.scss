@@ -4,8 +4,13 @@ body {
   font-family: sans-serif;
 }
 
-.app_container {
+.home_container {
   height: 100vh;
+}
+
+.login_container {
+  height: 100vh;
+  text-align: center;
 }
 
 $standart_spacing: 10px;
