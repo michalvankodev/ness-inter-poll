@@ -5,9 +5,9 @@ services:
   mongo:
     build:
       context: ./mongo
-    image: "mongo_db"
+    #image: "mongo_db"
      #user: root    
-    container_name: "mongo-db"
+    #container_name: "mongo-db"
     ports:        
         - "27017:27017" 
     #volumes:
@@ -15,20 +15,20 @@ services:
   nesspoll-users:
     build:
       context: ./services/users  
-    image: "nesspoll_users"
+    #image: "nesspoll_users"
      #user: root
     ports:
         - "3001:3001"     
-    container_name: "nesspoll-users"   
+    #container_name: "nesspoll-users"   
     depends_on:
       - "mongo"    
   nesspoll:
     build:
       context: ./nesspoll
-    image: "nesspoll_web"    
+    #image: "nesspoll_web"    
     ports:
       - "3000:3000"      
-    container_name: "nesspoll-web"
+    #container_name: "nesspoll-web"
     depends_on:
       - "nesspoll-users"   
 #volumes:
