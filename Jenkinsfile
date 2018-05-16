@@ -1,4 +1,4 @@
-node {
+node ('Windows_host_slave') {
     def commit_id
     stage('Checkout') {
         checkout scm
