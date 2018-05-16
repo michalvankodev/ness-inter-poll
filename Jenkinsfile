@@ -6,7 +6,7 @@ node ('Windows_host_slave') {
         commit_id = 'latest'
     }
     stage('Compose-Up'){
-        sh "docker-compose -f docker-compose.yml up -d --build"
+        bash "docker-compose -f docker-compose.yml up -d --build"
     }
    
    //stage('Test') {
