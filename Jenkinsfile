@@ -2,7 +2,7 @@ node ('Windows_host_slave') {
     def commit_id
     stage('Checkout') {
         checkout scm
-        sh "git rev-parse --short HEAD > .git/commit-id"
+        bash "git rev-parse --short HEAD > .git/commit-id"
         commit_id = 'latest'
     }
     stage('Compose-Up'){
