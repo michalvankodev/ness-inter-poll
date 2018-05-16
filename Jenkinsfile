@@ -1,12 +1,12 @@
 node ('Windows_host_slave') {
-    def commit_id
-    stage('Checkout') {
-        checkout scm
-        bash "git rev-parse --short HEAD > .git/commit-id"
-        commit_id = 'latest'
-    }
+    //def commit_id
+    //stage('Checkout') {
+    //    checkout scm
+    //    bash "git rev-parse --short HEAD > .git/commit-id"
+    //    commit_id = 'latest'
+    //}
     stage('Compose-Up'){
-        bash "docker-compose -f docker-compose.yml up -d --build"
+        sh "docker-compose -f docker-compose.yml up -d --build"
     }
    
    //stage('Test') {
