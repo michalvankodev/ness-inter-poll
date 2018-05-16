@@ -10,7 +10,7 @@ import { createBasicStrategySetup } from './passport-strategies/basic-strategy';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { JWTStrategyOptions, createJWTStrategySetup } from './passport-strategies/jwt-strategy';
 
-connect('mongodb://localhost/myapp') // TODO I cant connect to mongo 
+connect('mongodb://localhost/ness-inter-poll-dev') // TODO I cant connect to mongo
 // Configure authentication strategies with `passport`.
 passport.use(new BasicStrategy(createBasicStrategySetup()))
 passport.use(new JwtStrategy(JWTStrategyOptions, createJWTStrategySetup()))
