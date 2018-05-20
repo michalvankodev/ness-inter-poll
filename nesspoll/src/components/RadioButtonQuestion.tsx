@@ -20,13 +20,15 @@ class Value {
 
 class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState> {
     private data: Array<Value>;
+    private count: number;
 
     constructor(props: any) {
         super(props);
 
+        this.count = 0;
         this.data = [
-            new Value('1', 'text'),
-            new Value('2', 'text')
+            new Value('a', 'text'),
+            new Value('b', 'text')
         ];
 
         this.state = ({
@@ -41,7 +43,9 @@ class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState>
     }
 
     addRadioButton() {
-        this.data.push(new Value('' + Math.random, 'text'));
+        this.count++;
+
+        this.data.push(new Value('' + this.count, 'text' + this.count));
         
         this.setState({
             radioButtons: this.getRadioButtons()
