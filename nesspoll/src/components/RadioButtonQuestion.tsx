@@ -8,6 +8,16 @@ interface RadioButtonQuestionState {
     radioButtons: Array<RadioButton>;
 }
 
+class Value {
+    public value: string;
+    public label: string;
+
+    constructor(value: string, label: string) {
+        this.value = value;
+        this.label = label;
+    }
+}
+
 class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState> {
     private data: Array<Value>;
 
@@ -15,8 +25,8 @@ class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState>
         super(props);
 
         this.data = [
-            new Value('1', ''),
-            new Value('2', '')
+            new Value('1', 'text'),
+            new Value('2', 'text')
         ];
 
         this.state = ({
@@ -31,18 +41,17 @@ class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState>
     }
 
     addRadioButton() {
-        this.data.push(new Value('3', ''));
+        this.data.push(new Value('' + Math.random, 'text'));
         
         this.setState({
             radioButtons: this.getRadioButtons()
         });
-
-        console.log(this.data);
     }
 
     render() {
         return (
             <div>
+                <label>Question: Text</label>
                 <div>
                     <RadioButtonGroup>
                         {this.state.radioButtons}
@@ -61,16 +70,6 @@ class RadioButtonQuestion extends React.Component<any, RadioButtonQuestionState>
                 </div>
             </div>
         );
-    }
-}
-
-class Value {
-    public value: string;
-    public label: string;
-
-    constructor(value: string, label: string) {
-        this.value = value;
-        this.label = label;
     }
 }
 
