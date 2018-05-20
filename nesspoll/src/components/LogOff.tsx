@@ -2,7 +2,7 @@ import * as React from 'react';
 import ExitToApp from 'material-ui/svg-icons/action/exit-to-app';
 import { Redirect } from 'react-router-dom';
 
-export class LogOff extends React.Component<any, any> {
+export class LogOff extends React.Component<any, RedirectState> {
     constructor(props: any) {
         super(props);
         this.state = ({
