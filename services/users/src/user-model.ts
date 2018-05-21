@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose'
 
 const userSchema = new Schema({
-  name: { type: String, unique: true, lowercase: true },
+  username: { type: String, unique: true, lowercase: true },
   email: { type: String }, // TODO: create match regexp for validation
-  password: String,
+  hashedPassword: String,
   groups: [String], // Group is determining which kind of permissions this user has
-  createdDate: Date,
+  createdDate: {type: Date, default: Date.now}
 })
 
 export default model('User', userSchema)
