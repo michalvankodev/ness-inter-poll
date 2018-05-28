@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:10.1
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -9,6 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
+RUN npm install forever -g
 # If you are building your code for production
 # RUN npm install --only=production
 
@@ -16,4 +17,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "forever", "scripts/start.js", "3000" ]
