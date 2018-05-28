@@ -28,8 +28,8 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/create', createUser)
-router.post('/login', login)
-router.get('/verify', verifyUser)
+router.post('/login', passport.authenticate('basic', { session: false }), login)
+router.get('/verify', passport.authenticate('jwt', { session: false }), verifyUser)
 
 usersApp.use('/', router)
 
