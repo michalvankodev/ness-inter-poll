@@ -8,7 +8,12 @@ import UserModel from '../user-model'
 export function createBasicStrategySetup() {
   return async function BasicStrategySetup(username, password, cb) {
     try {
-      const user = await UserModel.find({ username })
+      const user = await UserModel.findOne({ username })
+
+      if (!user) {
+        return cb(null, false, { message: 'Not Found.'});
+      }
+
       const match = await compare(password, user.hashedPassword)
       if (!match) { 
         return cb(null, false, { message: 'Incorrect password.'});

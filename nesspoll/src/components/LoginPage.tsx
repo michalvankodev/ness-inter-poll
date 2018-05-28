@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import { TextField, RaisedButton } from 'material-ui';
+import * as request from 'request-promise-native';
 
 interface LoginProps {
     user: {
@@ -19,20 +20,25 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
     });
    }
 
-  handleClickSignIn() {
-    let isExisting = (this.state.username === this.props.user.username) && (this.state.password === this.props.user.password);
-
-    if (this.state.username === '' || this.state.password === '') {
+  async handleClickSignIn() {
+    const { username, password } = this.state;
+    if (username === '' || password === '') {
       alert('Username or Password is missing');
       return;
     }
 
-    if (!isExisting) {
-      alert('Username or Password is not correct');
-      return;
-    }
+    console.log('robimmmmmmmmmm request');
+    const res = await request
+      .post('/login', { resolveWithFullResponse: true })
+      .auth(username, password);
 
-    this.setState({redirect: true});
+    console.log('response', res);
+
+    if (res.statusCode === 200) {
+      window.localStorage.setItem('nessPollToken', res.token);
+      
+      this.setState({redirect: true});
+    }
   }
 
   handleClickRegister() {
