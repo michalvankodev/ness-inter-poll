@@ -2,12 +2,6 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import { TextField, RaisedButton } from 'material-ui';
 
-interface LoginState {
-    username: string;
-    password: string;
-    redirect: boolean;
-}
-
 interface LoginProps {
     user: {
       username: string;
@@ -73,10 +67,10 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
            floatingLabelText="Password"
           />
         </div>
-        <div className="button">
+        <div>
           <RaisedButton 
             onClick={() => this.handleClickSignIn()} 
-            style={{marginTop: 25, width: 300}} 
+            style={{borderRadius: 3, marginTop: 25, width: 300}} 
             label="Sign In"
           />
         </div>

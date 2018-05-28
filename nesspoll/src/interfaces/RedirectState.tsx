@@ -1,0 +1,3 @@
+interface RedirectState {
+    redirect: boolean;
+}
