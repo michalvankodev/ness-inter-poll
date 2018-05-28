@@ -29,7 +29,7 @@ class LoginPage extends React.Component<LoginProps, LoginState> {
 
     console.log('robimmmmmmmmmm request');
     const res = await request
-      .post('/login', { resolveWithFullResponse: true })
+      .post('http://172.20.0.3:8001/login', { resolveWithFullResponse: true })
       .auth(username, password);
 
     console.log('response', res);
